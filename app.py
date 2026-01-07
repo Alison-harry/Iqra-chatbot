@@ -2,12 +2,11 @@ import os
 import warnings
 import logging
 import base64
-from dotenv import load_dotenv
 
 import streamlit as st
 
+GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 # Load .env for API key
-load_dotenv()
 
 # LangChain & PDF tools
 from langchain_groq import ChatGroq
@@ -271,7 +270,7 @@ if prompt:
     model = "llama-3.1-8b-instant"
 
     groq_chat = ChatGroq(
-        groq_api_key=os.environ.get("GROQ_API_KEY"),
+        groq_api_key=GROQ_API_KEY,
         model_name=model
     )
 
